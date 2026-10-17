@@ -1,0 +1,29 @@
+# ---- Backend (Maven / Java) ----
+backend/target/
+*.class
+*.jar
+
+# Uploaded book images stored locally
+backend/uploads/
+uploads/
+
+# ---- Frontend (Node / Vite) ----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# ---- Environment / secrets ----
+.env
+.env.local
+**/application-local.properties
+
+# ---- IDE / OS ----
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+*.log
