@@ -1,18 +1,17 @@
 <div align="center">
 
-# 📚 Bookish
+# 📚 BookSwap
 
-### A modern online book store  browse, order and track books, with a full admin panel
+### A full-stack platform to swap books instead of buying new ones browse, request, chat and exchange
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-6DB33F?logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17%2F21-007396?logo=openjdk&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white)
-![Google Sign-In](https://img.shields.io/badge/Google-Sign--In-4285F4?logo=google&logoColor=white)
-
+![WebSocket](https://img.shields.io/badge/Realtime-WebSocket%20(STOMP)-FF6600?logo=websocket&logoColor=white)
+![Recharts](https://img.shields.io/badge/Charts-Recharts-22B5BF)
 
 </div>
 
@@ -20,62 +19,47 @@
 
 ## ✨ Overview
 
-**Bookish** is a full-stack e-commerce web app built with the MERN stack. Customers can discover books, add them to a cart or wishlist, check out, and follow their order from *Placed* to *Delivered*. Admins get a dedicated panel to manage the catalogue, categories and orders.
+**BookSwap** is a full-stack web application that lets students and book lovers swap books instead of buying new ones. Users list the books they own, browse and search listings by title, author, category and city, and send an exchange request offering one of their own books in return. The owner can accept or reject the request; once accepted, both books are marked exchanged, the two users chat in real time to arrange the handover, and afterwards they rate each other.
 
-The design is deliberately calm and bookish: warm paper-white pages, a navy header, maroon call-to-action buttons and serif headings.
 
-<!--
-## 📸 Screenshots
-Add your own screenshots to a `screenshots/` folder, then uncomment this block:
-
-| Home | Book details |
-|---|---|
-| ![Home](screenshots/home.png) | ![Book](screenshots/book.png) |
--->
 
 ---
 
 ## 🎯 Features
 
-### 🛍️ For customers
+### 🙋 For users
 
 | | Feature |
 |---|---|
-| 🏠 | **Home page** with hero banner, category chips, featured and newly added books |
-| 🔎 | **Search, filter & sort** — by title/author, category, price range; sort by newest, price or rating; pagination |
-| 📖 | **Book details** — price, discount, stock status, ratings, reviews and related books |
-| 🛒 | **Cart** — change quantities, remove items, live order summary (free delivery over ₹499, otherwise ₹49) |
-| ❤️ | **Wishlist** — "save for later" |
-| 🔐 | **Accounts** — sign up and log in with email, or continue with **Google** |
-| 💳 | **Checkout** — delivery address with pincode/phone validation, Cash on Delivery |
-| 📦 | **My orders & order tracking** — *Placed → Shipped → Delivered* stepper with a date for every stage |
-| 👤 | **Profile** — edit your name and saved address |
-| ⭐ | **Reviews** — one review per user per book; ratings update automatically |
+| 🔐 | **Accounts** — register and log in securely with JWT; passwords hashed with BCrypt |
+| 📖 | **Book listings** — add, edit, delete books with title, author, category, condition and description |
+| 🖼️ | **Flexible photos** — upload a book photo from your device **or** paste an external image link |
+| 🔎 | **Search, filter & sort** — by title, author, category, city and condition, with pagination |
+| 🔄 | **Exchange requests** — offer one of your own books for someone else's, with full history |
+| ✅ | **Accept / reject** — book owners approve or decline requests; other pending requests auto-resolve |
+| 💬 | **Real-time chat** — WebSocket (STOMP) chat with the other user once a request is accepted |
+| ⭐ | **Ratings & reviews** — rate and review the other user after a completed exchange |
+| ❤️ | **Wishlist** — save books of interest to view later |
+| 🔔 | **Notifications** — in-app and email alerts for requests, acceptances, rejections and reviews |
+| 👤 | **Profile** — manage your own details and see your average rating |
 
 ### 🛠️ For admins
 
 | | Feature |
 |---|---|
-| 📊 | **Dashboard** — total books, orders, revenue, customers and a low-stock list |
-| 📚 | **Manage books** — add, edit, delete, feature on the homepage |
-| 🚚 | **Manage orders** — see every order and update its status |
-| 🗂️ | **Manage categories** — add and delete categories |
+| 📊 | **Graphical dashboard** — bar and pie charts for users, books, exchanges and categories (Recharts) |
+| 🙍 | **Manage users** — block / unblock accounts |
+| 🗂️ | **Manage categories** — add, edit, remove book categories |
+| 📚 | **Manage books** — moderate or remove any listing |
 
 ### 🔒 Security & platform
 
-- Passwords hashed with **bcrypt**; JWT authentication; role-based admin access
-- **Google Sign-In** with server-side ID-token verification
-- **15-minute inactivity auto-logout** with a 60-second warning popup
-- **Honeypot bot protection** on the signup and review forms
-- **HTTPS redirect** in production; secrets live only in backend `.env`
-- Pincode (6-digit) and phone (10-digit) validation, confirm-password on signup
-
-### 🌐 SEO, performance & accessibility
-
-- Meta titles/descriptions, Open Graph & Twitter preview image, favicons, `robots.txt`, sitemap generator
-- **Privacy Policy** and **Terms & Conditions** pages (templates) and a **cookie-consent banner** that gates analytics
-- **Code splitting** per route and lazy-loaded images for a faster first load
-- Image alt text, WCAG AA colour contrast, keyboard focus styles, fully responsive, custom 404 page
+- Stateless **JWT authentication** with role-based access (`USER` / `ADMIN`) on every protected endpoint
+- **BCrypt** password hashing; request validation with Bean Validation (`@Valid`)
+- Ownership checks so users can only modify their own books and requests
+- **CORS** restricted to the frontend origin; secrets kept out of source code
+- Global exception handling no internal stack traces leaked to clients
+- **Privacy Policy**, **Terms of Use** and **Cookies Notice** pages with a cookie-consent banner and saved preferences
 
 ---
 
@@ -83,159 +67,112 @@ Add your own screenshots to a `screenshots/` folder, then uncomment this block:
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | React 19, Vite, React Router, Axios, Context API, Tailwind CSS 3, lucide-react, `@react-oauth/google` |
-| **Backend** | Node.js, Express 5, REST API, morgan, cors, dotenv |
-| **Database** | MongoDB + Mongoose |
-| **Auth & security** | JSON Web Tokens, bcryptjs, `google-auth-library` |
-| **Fonts** | Source Serif 4 (headings), Public Sans (body) |
+| **Frontend** | React 18 (Vite), React Router, Axios, Context API, Recharts, lucide-react, react-hot-toast |
+| **Backend** | Java 17/21, Spring Boot 3, Spring Web, Spring Security, Spring Data MongoDB, Spring WebSocket (STOMP) |
+| **Database** | MongoDB |
+| **Auth & security** | JSON Web Tokens (jjwt), BCrypt |
+| **Email** | JavaMailSender |
+| **Testing** | JUnit 5, Mockito |
+| **Build tools** | Maven (backend), npm / Vite (frontend) |
 
 ---
 
-## 📁 Project structure
+## 📁 Project Structure
 
 ```
-book-selling-portal/
-├── backend/
-│   ├── config/db.js                 # MongoDB connection
-│   ├── controllers/                 # auth, book, category, cart, order, review
-│   ├── middleware/                  # auth.js (JWT), admin.js (role check)
-│   ├── models/                      # User, Book, Category, Cart, Order, Review
-│   ├── routes/                      # one router per resource
-│   ├── scripts/                     # makeAdmin.js, deleteUser.js, generateSitemap.js
-│   ├── seed/seedData.js             # sample categories, books, demo accounts
-│   ├── .env.example
-│   └── server.js                    # Express entry point
-└── frontend/
-    ├── public/                      # favicons, og-image.png, robots.txt
-    ├── index.html                   # SEO / social meta tags
-    └── src/
-        ├── admin/                   # AdminLayout, Dashboard, ManageBooks/Orders/Categories
-        ├── components/              # Navbar, Footer, BookCard, CookieConsent,
-        │                            # SessionTimeoutWatcher, route guards, ...
-        ├── context/                 # AuthContext, CartContext, WishlistContext
-        ├── hooks/                   # useDocumentTitle
-        ├── pages/                   # Home, BookList, BookDetail, Cart, Wishlist, Login,
-        │                            # Signup, Checkout, MyOrders, TrackOrder, Profile,
-        │                            # PrivacyPolicy, Terms, NotFound
-        ├── services/api.js          # Axios instance (adds the JWT automatically)
-        ├── utils/                   # format, validate, analytics
-        ├── App.jsx                  # routes (lazy-loaded)
-        └── main.jsx
+book-exchange-portal/
+├── backend/                          # Spring Boot REST API (Maven)
+│   └── src/main/java/com/bookexchange/
+│       ├── entity/                    # MongoDB documents (User, Book, Exchange, ...)
+│       ├── repository/                # Spring Data MongoDB repositories
+│       ├── dto/                       # Request / response objects
+│       ├── security/                  # JWT utilities, auth filter, security config
+│       ├── config/                    # WebSocket config, file-upload config, data seeder
+│       ├── service/                   # Business logic
+│       └── controller/                # REST controllers
+│   └── src/main/resources/application.properties
+├── frontend/                         # React + Vite app
+│   └── src/
+│       ├── components/                # Navbar, Footer, BookCard, CookieBanner, ...
+│       ├── pages/                     # Home, Books, BookDetails, Admin, Chat, ...
+│       ├── context/                   # Auth, Category, Wishlist contexts
+│       └── api.js                     # Axios instance (adds the JWT automatically)
+├── scripts/
+│   └── import-books.mjs              # Bulk-import sample books via the REST API
+├── books-seed.csv                    # 30 sample books with real cover images
+└── README.md
 ```
-
-
----
 
 ## 🚀 Quick start
 
 ### Prerequisites
 
-- **Node.js 18+**
-- **MongoDB** — [MongoDB Community Server](https://www.mongodb.com/try/download/community) running locally, or a free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster
+- **JDK 17 or 21** (`java -version`)
+- **Maven** (`mvn -version`)
+- **Node.js 18+** and npm (`node -v`, `npm -v`)
+- **MongoDB** — [MongoDB Community Server](https://www.mongodb.com/try/download/community) running locally (or a free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster)
 
-### 1️⃣ Backend
+### 1️⃣ Start MongoDB
+
+```bash
+mongod
+```
+
+### 2️⃣ Backend
 
 ```bash
 cd backend
-npm install
-cp .env.example .env        # Windows: copy .env.example .env
+mvn spring-boot:run
 ```
 
-Open `.env` and fill in the values (see [Environment variables](#-environment-variables)). With a local MongoDB, the default `MONGO_URI` works as it is.
+The API runs at **http://localhost:8080**. On first run, a default admin account and starter categories are seeded automatically.
 
-Load the sample data and start the server:
-
-```bash
-npm run seed
-npm run dev
-```
-
-The API runs at **http://localhost:5000** — open `http://localhost:5000/api/health` and you should see `{"status":"ok"}`.
-
-### 2️⃣ Frontend
+### 3️⃣ Frontend
 
 In a **second terminal**:
 
 ```bash
 cd frontend
 npm install
-```
-
-Create `frontend/.env`:
-
-```
-VITE_API_URL=/api
-VITE_GOOGLE_CLIENT_ID=your-google-client-id
-```
-
-Then start it:
-
-```bash
 npm run dev
 ```
 
-Open **http://localhost:5173** 🎉 — in development Vite proxies `/api` to the backend, so there is no CORS setup to do.
+Open **http://localhost:5173** 🎉
 
-### 3️⃣ Demo accounts (created by `npm run seed`)
+### 4️⃣ (Optional) Import sample books
+
+Populate the catalogue with 30 real books, complete with cover images:
+
+```bash
+cd scripts
+node import-books.mjs
+```
+
+### 5️⃣ Demo account (seeded automatically)
 
 | Role | Email | Password |
 |---|---|---|
-| 👑 Admin | `admin@bookportal.com` | `admin123` |
-| 🙋 User | `reader@bookportal.com` | `reader123` |
+| 👑 Admin | `admin@bookexchange.com` | `Admin@123` |
+
 
 
 ---
 
-## 🔧 Environment variables
+## 🔧 Configuration
 
-### `backend/.env`
+### `backend/src/main/resources/application.properties`
 
-| Variable | Required | Description |
+| Property | Required | Description |
 |---|---|---|
-| `MONGO_URI` | ✅ | MongoDB connection string. Local: `mongodb://127.0.0.1:27017/book-selling-portal` |
-| `JWT_SECRET` | ✅ | Long random string used to sign login tokens |
-| `JWT_EXPIRES_IN` | – | Token lifetime (default `7d`) |
-| `PORT` | – | API port (default `5000`) |
-| `GOOGLE_CLIENT_ID` | for Google login | Same Client ID as the frontend |
-| `SITE_URL` | for sitemap | Your public domain, e.g. `https://yourdomain.com` |
+| `spring.data.mongodb.uri` | ✅ | MongoDB connection string. Local default: `mongodb://localhost:27017/book_exchange` |
+| `jwt.secret` | ✅ | Long random string used to sign login tokens |
+| `jwt.expiration` | – | Token lifetime in milliseconds |
+| `cors.allowed-origin` | ✅ | Frontend URL allowed to call the API (default `http://localhost:5173`) |
+| `app.admin.email` / `app.admin.password` | – | Credentials used to seed the default admin account |
+| `spring.mail.*` | for email | SMTP settings for sending notification emails (disabled by default) |
+| `file.upload-dir` | – | Local folder where uploaded book photos are stored |
 
-### `frontend/.env`
-
-| Variable | Required | Description |
-|---|---|---|
-| `VITE_API_URL` | – | API base URL. Keep `/api` in development; use the full backend URL when deployed |
-| `VITE_GOOGLE_CLIENT_ID` | for Google login | Google OAuth Client ID (public by design) |
-| `VITE_GA_MEASUREMENT_ID` | – | Google Analytics 4 ID (`G-XXXXXXXXXX`). Leave empty to disable analytics |
-
-> 🔁 Restart `npm run dev` after changing any `.env` file. Never commit `.env` files — only `.env.example`.
-
----
-
-## 🔑 Google Sign-In setup
-
-1. Open [Google Cloud Console](https://console.cloud.google.com) and create (or pick) a project.
-2. **APIs & Services → OAuth consent screen** → choose *External*, add an app name and your email, save.
-3. **APIs & Services → Credentials → Create credentials → OAuth client ID** → type *Web application*.
-4. Under **Authorized JavaScript origins** add `http://localhost:5173` (and your real domain later).
-5. Copy the **Client ID** into `GOOGLE_CLIENT_ID` (backend) and `VITE_GOOGLE_CLIENT_ID` (frontend) — the same value in both.
-6. Restart both servers.
-
-Google users are matched by email: a new account is created on first sign-in, and an existing email/password account is linked automatically.
-
----
-
-## 🧪 Utility scripts
-
-Run from the `backend/` folder (MongoDB must be running).
-
-| Command | What it does |
-|---|---|
-| `npm run seed` | **Wipes** users, books, categories, carts, orders and reviews, then adds 6 categories, 18 books and the two demo accounts |
-| `npm run make-admin -- you@example.com` | Promotes an existing account to admin (note the `--` before the email) |
-| `npm run delete-user -- admin@bookportal.com` | Deletes an account by email, e.g. to remove the demo admin |
-| `npm run generate-sitemap` | Writes `frontend/public/sitemap.xml` with static pages and every book URL (set `SITE_URL` first) |
-
-After `make-admin`, refresh the page (or log out and in again) and **Admin dashboard** appears in the account menu.
+> 🔁 Restart the backend after changing `application.properties`. Never commit real secrets — keep them local only.
 
 ---
 
@@ -246,40 +183,39 @@ After `make-admin`, refresh the page (or log out and in again) and **Admin dashb
 
 <br>
 
-Base URL: `http://localhost:5000/api` — authenticated routes expect `Authorization: Bearer <token>`.
+Base URL: `http://localhost:8080/api` — protected routes expect `Authorization: Bearer <token>`.
 
 | Method | Endpoint | Description | Access |
 |---|---|---|---|
-| GET | `/health` | Health check | Public |
-| POST | `/auth/register` | Create account | Public |
-| POST | `/auth/login` | Log in | Public |
-| POST | `/auth/google` | Log in / sign up with a Google `credential` | Public |
-| GET | `/auth/me` | Current user | Login |
-| PUT | `/auth/profile` | Update name and address | Login |
-| GET | `/auth/wishlist` | Get wishlist | Login |
-| POST | `/auth/wishlist/:bookId` | Toggle a book in the wishlist | Login |
-| GET | `/books` | List books — query: `search`, `category`, `minPrice`, `maxPrice`, `sort` (`newest`, `priceLowHigh`, `priceHighLow`, `rating`), `page`, `limit`, `featured` | Public |
-| GET | `/books/:id` | Book detail + related books | Public |
-| POST | `/books` | Create book | Admin |
-| PUT | `/books/:id` | Update book | Admin |
-| DELETE | `/books/:id` | Delete book | Admin |
+| POST | `/auth/register` | Register a new user | Public |
+| POST | `/auth/login` | Log in and receive a JWT | Public |
+| GET | `/users/me` | Get own profile | User |
+| PUT | `/users/me` | Update own profile | User |
+| GET | `/books` | List available books (paginated) | Public |
+| GET | `/books/{id}` | Get book details | Public |
+| GET | `/books/search` | Search / filter by keyword, category, city | Public |
+| GET | `/books/my` | List own books | User |
+| POST | `/books` | Add a book | User |
+| PUT | `/books/{id}` | Update a book | Owner |
+| DELETE | `/books/{id}` | Delete a book | Owner, Admin |
 | GET | `/categories` | List categories | Public |
-| POST | `/categories` | Create category | Admin |
-| DELETE | `/categories/:id` | Delete category | Admin |
-| GET | `/cart` | Get cart | Login |
-| POST | `/cart` | Add `{ bookId, quantity }` | Login |
-| PUT | `/cart/:itemId` | Set item quantity | Login |
-| DELETE | `/cart/:itemId` | Remove item | Login |
-| DELETE | `/cart` | Clear cart | Login |
-| POST | `/orders` | Place an order from the cart `{ address, paymentMethod }` | Login |
-| GET | `/orders/:userId` | A user's orders (admins can view any) | Login |
-| GET | `/orders/detail/:id` | One order (owner or admin) | Login |
-| GET | `/orders/all` | Every order | Admin |
-| PUT | `/orders/:id` | Update status `{ orderStatus }` | Admin |
-| POST | `/reviews` | Add a review `{ bookId, rating, comment }` | Login |
-| GET | `/reviews/:bookId` | Reviews for a book | Public |
-
-Order statuses: `placed` → `shipped` → `delivered` (or `cancelled`). Every change is stored in the order's `statusHistory`, which powers the tracking page.
+| POST / PUT / DELETE | `/categories` | Manage categories | Admin |
+| POST | `/exchanges` | Send an exchange request | User |
+| GET | `/exchanges/sent` | Requests sent by me | User |
+| GET | `/exchanges/received` | Requests received by me | User |
+| PUT | `/exchanges/{id}/accept` | Accept a request | Owner |
+| PUT | `/exchanges/{id}/reject` | Reject a request | Owner |
+| GET | `/messages/{exchangeId}` | Chat history of an exchange | Participants |
+| WS | `/ws` (STOMP) | Real-time chat channel | Participants |
+| POST | `/reviews` | Rate and review after an exchange | User |
+| GET | `/users/{id}/reviews` | Reviews received by a user | User |
+| GET | `/wishlist` | View wishlist | User |
+| POST / DELETE | `/wishlist/{bookId}` | Add / remove a wishlist item | User |
+| GET | `/notifications` | List notifications | User |
+| PUT | `/notifications/{id}/read` | Mark notification as read | User |
+| GET | `/admin/users` | List all users | Admin |
+| PUT | `/admin/users/{id}/block` | Block / unblock a user | Admin |
+| GET | `/admin/stats` | Dashboard statistics | Admin |
 
 </details>
 
@@ -287,46 +223,42 @@ Order statuses: `placed` → `shipped` → `delivered` (or `cancelled`). Every c
 
 ## 🧭 How it works
 
-- **Authentication** — on login the backend returns a JWT. The frontend keeps it in `localStorage`, and the Axios instance in `services/api.js` attaches it to every request. `protect` verifies the token and `adminOnly` checks `role === "admin"`.
-- **Route guards** — `ProtectedRoute` sends guests to `/login`; `AdminRoute` sends non-admins to `/`.
-- **Cart & checkout** — each user's cart is stored in MongoDB. Placing an order copies the cart into an order (with a price snapshot), reduces stock and empties the cart.
-- **Order tracking** — every status change is saved with a timestamp, and the tracking page turns it into a step-by-step timeline.
-- **Inactivity timeout** — `SessionTimeoutWatcher` shows a warning with a 60-second countdown after 15 minutes of no activity, then logs the user out. Tweak `IDLE_TIMEOUT_MINUTES` and `WARNING_SECONDS` at the top of `frontend/src/components/SessionTimeoutWatcher.jsx`.
-- **Cookies & analytics** — Google Analytics loads only after a visitor clicks *Accept* on the cookie banner.
-- **Page titles** — each page sets its own browser-tab title through the `useDocumentTitle` hook.
+- **Authentication** — on login the backend returns a signed JWT. The frontend stores it and the Axios instance in `src/api.js` attaches it to every request; `JwtAuthFilter` validates it on the backend and enforces `USER` / `ADMIN` roles.
+- **Exchange workflow** — a request starts as `PENDING`. The owner can accept (both books become `EXCHANGED`, every other pending request on either book is auto-rejected, and a chat channel opens) or reject (the books stay `AVAILABLE`).
+- **Chat** — once a request is accepted, both participants can exchange messages over a STOMP WebSocket channel; history is stored so it reloads correctly.
+- **Admin dashboard** — `/admin/stats` returns aggregate counts, rendered as bar and pie charts on the admin page.
+- **Cookies** — the cookie banner gates non-essential storage until the visitor accepts, with a preferences page to change the choice later.
 
 ---
 
-
-
+## 🩹 Troubleshooting
 
 | Problem | Fix |
 |---|---|
-| `MongoDB connection error` | Make sure `mongod` is running (local), or that your Atlas connection string is correct and your IP is allowed under *Network Access* |
-| `{"message":"Route not found"}` at `localhost:5000` | That is the API, not the website — open **http://localhost:5173** |
-| `Cannot find module '.../scripts/makeAdmin.js'` | The `scripts` folder must be directly inside `backend/`, not inside `config/` |
-| `make-admin` / `delete-user` ignores the email | Put `--` before it: `npm run make-admin -- you@example.com` |
-| Google button missing or `origin_mismatch` | Add `http://localhost:5173` to *Authorized JavaScript origins*, check `VITE_GOOGLE_CLIENT_ID`, restart the frontend |
-| "Admin dashboard" missing after `make-admin` | Refresh the page, or log out and back in |
-| Frontend shows "Network Error" | Check that the backend is running on port 5000 |
-| Logged out right after login | Check that `JWT_SECRET` is set in `backend/.env` |
-| VS Code shows `Unknown at rule @tailwind` / `@apply` | Editor-only warning. Install **Tailwind CSS IntelliSense**, or set `"css.validate": false`. The app is not affected |
-
-</details>
+| `JAVA_HOME is not defined correctly` | Set `JAVA_HOME` to your JDK install folder (e.g. `C:\Program Files\Java\jdk-21...`) and reopen the terminal |
+| `No plugin found for prefix 'spring_boot'` | Typo — the Maven goal uses a hyphen: `mvn spring-boot:run`, not `spring_boot:run` |
+| MongoDB connection error | Make sure `mongod` is running locally, or that your Atlas URI and IP allow-list are correct |
+| Frontend shows "Network Error" | Check that the backend is running on port 8080 and `cors.allowed-origin` matches the frontend URL |
+| 401 Unauthorized on every request | Token missing/expired — log in again; check `jwt.secret` hasn't changed between restarts |
+| Blocked user can't log in | Expected — an admin must unblock the account from the Admin dashboard |
+| Uploaded photo doesn't show | Check `file.upload-dir` exists and is writable, and that the backend serves `/uploads/**` |
 
 ---
 
 ## 📌 Current scope
 
-- 💵 **Cash on Delivery** is the working payment method. The "Pay online" option at checkout is a placeholder with no payment gateway behind it, so it should not be used with real money.
-- 🚚 The ₹49 delivery charge (orders under ₹499) is shown at checkout but is not added to the stored order total.
-- 🖼️ Book covers are image URLs (the seed data uses generated placeholders); there is no file upload.
+- 📦 Exchanges are strictly **book-for-book**; there is no payment, pricing or courier integration — users arrange the physical handover themselves via chat.
+- 🖼️ Book photos are either uploaded locally or linked externally; there is no cloud storage integration.
+- ✉️ Email notifications require SMTP credentials to be configured — they are disabled by default in a fresh clone.
+
+---
+
 
 ---
 
 <div align="center">
 
-Built as a learning project by **PRATIMESH TONDE** ❤️
+Designed and Developed by **Pratimesh Tonde** ❤️ | Powered by **AIX Tech Ltd.**
 
 ⭐ If you like this project, give it a star!
 
