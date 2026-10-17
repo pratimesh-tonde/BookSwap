@@ -77,7 +77,7 @@ book-exchange-portal/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/book-exchange-portal.git
+git clone https://github.com/pratimesh-tonde>/book-exchange-portal.git
 cd book-exchange-portal
 ```
 
